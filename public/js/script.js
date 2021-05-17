@@ -1,3 +1,4 @@
+let socket = io();
 var gametitle = "Insert Game Name Here";
 
 // Loads the starting screen for the game
@@ -38,6 +39,8 @@ function startbutton() {
     testplayer.textContent = "SEFF - 1st"
     testplayer.classList.add ("leaderboardname")
     document.getElementById ("leaderboard").appendChild(testplayer);
+
+    socket.emit('joined');
 }
 loadstartscreen();
 
