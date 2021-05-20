@@ -50,12 +50,14 @@ function startbutton() {
     testplayer.classList.add ("leaderboardname")
     document.getElementById ("leaderboard").appendChild(testplayer);
 
-    socket.emit('joined');
+    socket.emit('joined',{
+        name: document.getElementById("namebox").value
+    });
+
     console.log("Joined!")
 }
 loadstartscreen();
 
-// When people press play, it will join them into a lobby that is in the "waiting for people" state
-// Once 4 people are in that lobby, a new one will be created and the cycle is repeated.
+
 
 
