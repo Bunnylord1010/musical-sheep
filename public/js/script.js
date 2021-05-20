@@ -38,6 +38,7 @@ function startbutton() {
     document.getElementById("title").remove();
     document.getElementById("startbutton").remove();
     document.getElementById("optionsbutton").remove();
+    document.getElementById("namebox").remove();
     document.body.style.backgroundColor = "rgb(255, 255, 255)"
 
     var leaderboard = document.createElement("div");
