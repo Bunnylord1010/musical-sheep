@@ -24,26 +24,40 @@ server.listen(port, ()=>{
     console.log("server is up on "+port);
 })
 io.on('connection',(socket)=>{
-    socket.on('joined',()=>{
+    socket.on('joined',(data)=>{
         if (roomlist.length == 0){
             var room = [];
-            room.push(socket);
+            var player =[];
+            
+            player.push(socket);
+            player.push(data.name);
+            room.push(player);
             roomlist.push(room);
         }
+
         var foundroom = false;
         for (var i=0;i<roomlist.length;i++){
-            if (roomlist[i].length <= 4 && !foundroom){
-                roomlist[i].push(socket);
+            if (roomlist[i].length <= 4 && !foundroom)
+            {
+                var player = [];
+                player.push(socket);
+                player.push(data.name);
+                roomlist[i].push(player);
                 foundroom = true;
             }
         }
         if (foundroom == false){
             var room = [];
-            room.push(socket);
+            var player =[];
+            
+            player.push(socket);
+            player.push(data.name);
+            room.push(player);
             roomlist.push(room);
         }
     });
-    socket.on('disconnect', ()=>{
+    
+    +socket.on('disconnect', ()=>{
         for (var i=0;i<roomlist.length;i++){
             for (var j=0;j<roomlist[i].length;j++){
                 if (roomlist[i] == socket){
