@@ -9,6 +9,14 @@ function loadstartscreen() {
     title.setAttribute ("id","title");
     document.body.appendChild(title);
 
+    var namebox = document.createElement("input");
+    namebox.classList.add("namebox");
+    namebox.setAttribute("placeholder","Enter Name Here!");
+    namebox.setAttribute("id","namebox");
+    document.body.appendChild(namebox);
+    var gap1 = document.createElement("br");
+    document.body.appendChild(gap1);
+
     var startbutton = document.createElement("button");
     startbutton.classList.add("startbutton");
     startbutton.textContent = "Start the Race!";
@@ -22,6 +30,8 @@ function loadstartscreen() {
     optionsbutton.setAttribute ("onclick","optionsbutton()");
     optionsbutton.setAttribute ("id","optionsbutton");
     document.body.appendChild(optionsbutton);
+
+
 }
 // When the start button is clicked, it removes the start screen and changes it to the play screen
 function startbutton() {
