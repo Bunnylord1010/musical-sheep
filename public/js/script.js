@@ -41,6 +41,7 @@ function startbutton() {
     document.getElementById ("leaderboard").appendChild(testplayer);
 
     socket.emit('joined');
+    console.log("Joined!")
 }
 loadstartscreen();
 
