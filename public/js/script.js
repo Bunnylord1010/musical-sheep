@@ -38,6 +38,7 @@ function startbutton() {
     document.getElementById("title").remove();
     document.getElementById("startbutton").remove();
     document.getElementById("optionsbutton").remove();
+    var thingicopied = document.getElementById("namebox").value;
     document.getElementById("namebox").remove();
     document.body.style.backgroundColor = "rgb(255, 255, 255)"
 
@@ -52,7 +53,7 @@ function startbutton() {
     document.getElementById ("leaderboard").appendChild(testplayer);
 
     socket.emit('joined',{
-        name: document.getElementById("namebox").value
+        name: thingicopied
     });
 
     console.log("Joined!")
