@@ -1,4 +1,4 @@
-let socket = io();
+
 var gametitle = "Insert Game Name Here";
 
 // Loads the starting screen for the game
@@ -8,14 +8,6 @@ function loadstartscreen() {
     title.textContent = "Welcome to "+gametitle;
     title.setAttribute ("id","title");
     document.body.appendChild(title);
-
-    var namebox = document.createElement("input");
-    namebox.classList.add("namebox");
-    namebox.setAttribute("placeholder","Enter Name Here!");
-    namebox.setAttribute("id","namebox");
-    document.body.appendChild(namebox);
-    var gap1 = document.createElement("br");
-    document.body.appendChild(gap1);
 
     var startbutton = document.createElement("button");
     startbutton.classList.add("startbutton");
@@ -38,26 +30,36 @@ function startbutton() {
     document.getElementById("title").remove();
     document.getElementById("startbutton").remove();
     document.getElementById("optionsbutton").remove();
-    var thingicopied = document.getElementById("namebox").value;
-    document.getElementById("namebox").remove();
-    document.body.style.backgroundColor = "rgb(255, 255, 255)"
+    document.body.style.backgroundColor = "rgb(255, 255, 255)";
 
     var leaderboard = document.createElement("div");
     leaderboard.classList.add("leaderboard");
     leaderboard.setAttribute ("id","leaderboard");
-    document.body.appendChild(leaderboard)
+    document.body.appendChild(leaderboard);
     
-    var testplayer = document.createElement("p")
-    testplayer.textContent = "SEFF - 1st"
-    testplayer.classList.add ("leaderboardname")
+    var testplayer = document.createElement("p");
+    testplayer.textContent = "SEFF - 1st";
+    testplayer.classList.add ("leaderboardname");
     document.getElementById ("leaderboard").appendChild(testplayer);
 
-    socket.emit('joined',{
-        name: thingicopied
-    });
+    var racetrack = document.createElement("canvas");
+    racetrack.setAttribute("width", "800px");
+    racetrack.setAttribute("height", "600px");
+    racetrack.setAttribute("id", "racetrack");
+    document.body.appendChild(racetrack);
+    var ctx = racetrack.getContext("2d");
+    var image = new Image();
+    image.src = "src/racetrack.png";
+    ctx.drawImage(image, 0, 0);
 
-    console.log("Joined!")
-}
+
+
+
+
+    };
+
+    console.log("Joined!");
+;
 loadstartscreen();
 
 
